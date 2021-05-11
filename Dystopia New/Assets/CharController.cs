@@ -11,7 +11,7 @@ public class CharController : MonoBehaviour
     private LayerMask whatIsGround;
 
     public float _speed = 6f;
-    public float JumpForce = 5;
+    public float JumpForce = 99999999;
 
     private Rigidbody2D _rigidbody;
 
