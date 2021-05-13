@@ -11,7 +11,9 @@ public class CharController : MonoBehaviour
     private LayerMask whatIsGround;
 
     public float _speed = 6f;
-    public float JumpForce = 5;
+    public float JumpForce = 99999999;
+
+    public Animator animator;
 
     private Rigidbody2D _rigidbody;
 
@@ -28,10 +30,13 @@ public class CharController : MonoBehaviour
     void Update()
     {
 
-        transform.rotation = Quaternion.Euler(0, 0, 0);
+        transform.rotation = Quaternion.Euler(transform.rotation.x, 0, 0);
+
 
         var _move = Input.GetAxis("Horizontal");
         transform.position = transform.position + new Vector3(_move * _speed * Time.deltaTime, 0, 0);
+
+        animator.SetFloat("Speed", Mathf.Abs(_move));
 
         if (!Mathf.Approximately(0, _move))
             transform.rotation = _move > 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
